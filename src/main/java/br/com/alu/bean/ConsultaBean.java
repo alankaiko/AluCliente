@@ -20,10 +20,21 @@ public class ConsultaBean {
 	private PedidoService service;
 
 	private List<Pedido> listaTodos = new ArrayList<Pedido>();
+	private Pedido pedido = new Pedido();
 
 	@PostConstruct
 	public void ListaInicial() {
-		this.listaTodos = service.ListarTodos();
+		//this.listaTodos = service.ListarTodos();
+		this.pedido = service.BuscarPorPedido(7011852);
+		System.out.println(pedido.getPedido_cliente());
+	}
+
+	public PedidoService getService() {
+		return service;
+	}
+
+	public void setService(PedidoService service) {
+		this.service = service;
 	}
 
 	public List<Pedido> getListaTodos() {
@@ -33,4 +44,13 @@ public class ConsultaBean {
 	public void setListaTodos(List<Pedido> listaTodos) {
 		this.listaTodos = listaTodos;
 	}
+	
+	public Pedido getPedido() {
+		return pedido;
+	}
+	
+	public void setPedido(Pedido pedido) {
+		this.pedido = pedido;
+	}
+
 }

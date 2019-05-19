@@ -14,12 +14,12 @@ import br.com.alu.modelo.Pedido;
 public class PedidoService {
 	@Autowired
 	private PedidosDAO dao;
-	
+
 	@Transactional
 	public List<Pedido> ListarTodos() {
 		return dao.ListaGeral();
 	}
-	
+
 	@Transactional
 	public Pedido BuscarPorPedido(Integer codigo) {
 		return dao.PedidoPorcodigo(codigo);
