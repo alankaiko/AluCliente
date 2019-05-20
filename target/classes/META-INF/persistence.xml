@@ -10,7 +10,6 @@
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 		
 		<class>br.com.alu.modelo.Pedido</class>
-		<class>br.com.alu.modelo.PedidoItem</class>
 
 		<properties>
 			<!-- dados da conexao -->
