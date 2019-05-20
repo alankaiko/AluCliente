@@ -13,14 +13,41 @@
 	
 	<h:body>
 		<h:form>
-			<p:outputLabel value="pedido"/>
-			<p:inputText value="#{consultaBean.pedido.pedido_id}"/>
-			
-			<p:outputLabel value="pedido cliente"/>
-			<p:inputText value="#{consultaBean.pedido.pedido_cliente}"/>
-			
-			<p:outputLabel value="nome cliente"/>
-			<p:inputText value="#{consultaBean.pedido.pedido_cliente_nome}"/>
+			<p:dataTable value="#{consultaBean.listaTodos}" var="lista" paginator="true" rows="10">
+				<p:column headerText="id" style="width: 10%; text-align: center">
+					<h:outputText value="#{lista.pedido_id}"/>
+				</p:column>
+				
+				<p:column headerText="Cód cliente" style="width: 100px; text-align: center">
+					<h:outputText value="#{lista.cliente_id}"/>
+				</p:column>
+				
+				<p:column headerText="Nome Cliente" style="width: 100px; text-align: center">
+					<h:outputText value="#{lista.pedido_cliente_nome}"/>
+				</p:column>
+				
+				<p:column headerText="Data Pedido">
+					<h:outputText value="#{lista.pedido_data}"/>
+				</p:column>
+				
+				<p:column headerText="Pedido cliente">
+					<h:outputText value="#{lista.pedido_cliente}"/>
+				</p:column>
+				
+				<p:column headerText="status">
+					<h:outputText value="#{lista.pedido_status}"/>
+				</p:column>
+				
+				<p:column headerText="Previsão entrega">
+					<h:outputText value="#{lista.pedido_previsao_entrega}"/>
+				</p:column>
+				
+				
+				
+				<p:column>
+					<p:button icon="ui-icon-search"/>
+				</p:column>
+			</p:dataTable>
 		</h:form>
 	</h:body>
 </html>

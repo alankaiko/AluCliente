@@ -24,9 +24,7 @@ public class ConsultaBean {
 
 	@PostConstruct
 	public void ListaInicial() {
-		//this.listaTodos = service.ListarTodos();
-		this.pedido = service.BuscarPorPedido(7011852);
-		System.out.println(pedido.getPedido_cliente());
+		this.listaTodos = service.ListarTodos();
 	}
 
 	public PedidoService getService() {

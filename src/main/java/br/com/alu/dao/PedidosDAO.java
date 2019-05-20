@@ -26,7 +26,6 @@ public class PedidosDAO {
 	}
 
 	public Pedido PedidoPorcodigo(Integer codigo) {
-		System.out.println("numero = "+ codigo);
 		return gera.find(Pedido.class, codigo);
 	}
 
