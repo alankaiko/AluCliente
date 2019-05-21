@@ -26,6 +26,14 @@
 		    <artifactId>postgresql</artifactId>
 		    <version>9.3-1102-jdbc4</version>
 		</dependency>
+		
+		
+		<!-- https://mvnrepository.com/artifact/postgresql/postgresql -->
+		<!--<dependency> -->
+		<!--    <groupId>postgresql</groupId> -->
+		<!--    <artifactId>postgresql</artifactId> -->
+		<!--    <version>8.2-507.jdbc4</version> -->
+		<!--</dependency> -->
 	
 		<!-- PrimeFaces (biblioteca de componentes) -->
 		<dependency>

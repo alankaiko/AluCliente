@@ -24,7 +24,7 @@
 				</div>
 			</div>
 			<div>
-				<p:commandButton value="Pesquisar" actionListener="consultaBean.buscarPorCodigo" update=":formulario"/>
+				<p:commandButton value="Pesquisar" actionListener="#{consultaBean.BuscarPorCodigo}" update=":formulario"/>
 			</div>
 		</h:panelGrid>
 		
@@ -39,8 +39,8 @@
 			<p:inputText value="#{consultaBean.pedido.cliente_id}"/>
 			
 			<p:outputLabel value=""/>
-			<p:inputText value="#{consultaBean.pedido.pedido_data}"/>
-			
+			<p:calendar value="#{consultaBean.pedido.pedido_data}" pattern="dd/MM/yyyy" showOn="none" disabled="true"/>
+		
 			<p:outputLabel value=""/>
 			<p:inputText value="#{consultaBean.pedido.pedido_cliente}"/>
 
@@ -48,7 +48,7 @@
 			<p:inputText value="#{consultaBean.pedido.pedido_status}"/>
 			
 			<p:outputLabel value=""/>
-			<p:inputText value="#{consultaBean.pedido.pedido_previsao_entrega}"/>
+			<p:calendar value="#{consultaBean.pedido.pedido_previsao_entrega}" pattern="dd/MM/yyyy" showOn="none" disabled="true"/>
 			
 			<p:outputLabel value=""/>
 			<p:inputText value="#{consultaBean.pedido.pedido_cliente_nome}"/>

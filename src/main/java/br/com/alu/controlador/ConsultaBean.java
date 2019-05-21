@@ -1,6 +1,4 @@
-package br.com.alu.bean;
-
-import javax.annotation.PostConstruct;
+package br.com.alu.controlador;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -10,23 +8,20 @@ import br.com.alu.modelo.Pedido;
 import br.com.alu.service.PedidoService;
 
 @Component
-@Scope("session")
+@Scope("view")
 public class ConsultaBean {
 	@Autowired
 	private PedidoService service;
 
 	private Pedido pedido;
 	private int codigoProjeto;
-	
-	
+
 	public ConsultaBean() {
 		this.pedido = new Pedido();
 	}
 
 	public void BuscarPorCodigo() {
 		this.pedido = service.BuscarPorPedido(this.codigoProjeto);
-		System.out.println(this.pedido.getPedido_id()+"f");
-		System.out.println(this.pedido.getPedido_cliente()+"aff");
 	}
 
 	public Pedido getPedido() {
