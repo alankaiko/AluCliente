@@ -1,10 +1,12 @@
 package br.com.alu.modelo;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -25,9 +27,12 @@ public class Pedido {
 	@OneToOne(cascade = CascadeType.ALL)
 	private Empresa empresa;
 
-	@OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL,fetch=FetchType.EAGER)
 	private List<Pedido_Item> listapecas;
-
+	
+	public Pedido() {
+		this.listapecas = new ArrayList<Pedido_Item>();
+	}
 	public Integer getPedido_id() {
 		return pedido_id;
 	}

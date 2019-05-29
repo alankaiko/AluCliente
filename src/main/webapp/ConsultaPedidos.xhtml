@@ -13,40 +13,48 @@
 	
 	<h:body>
 		<h:form id="formulario">
-		<h:panelGrid>
-			<div>
+			<h:panelGrid>
 				<div>
-					<p:outputLabel value="Digite o Código do Projeto"/>
+					<div>
+						<p:outputLabel value="Digite o Código do Projeto"/>
+					</div>
+					
+					<div>
+						<p:inputText value="#{consultaBean.codigoProjeto}"/>
+					</div>
 				</div>
+				<div>
+					<p:commandButton value="Pesquisar" actionListener="#{consultaBean.BuscarPorCodigo}" update=":formulario"/>
+				</div>
+			</h:panelGrid>
+			
+			<h:panelGrid id="painelDados" columns="12">
+				<p:outputLabel value=""/>
+				<p:inputText value="#{consultaBean.pedido.pedido_id}"/>
 				
-				<div>
-					<p:inputText value="#{consultaBean.codigoProjeto}"/>
-				</div>
-			</div>
-			<div>
-				<p:commandButton value="Pesquisar" actionListener="#{consultaBean.BuscarPorCodigo}" update=":formulario"/>
-			</div>
-		</h:panelGrid>
-		
-		<h:panelGrid id="painelDados" columns="2">
-			<p:outputLabel value=""/>
-			<p:inputText value="#{consultaBean.pedido.pedido_id}"/>
+				<p:outputLabel value=""/>
+				<p:calendar value="#{consultaBean.pedido.pedido_data}" pattern="dd/MM/yyyy" showOn="none" disabled="true"/>
 			
-			<p:outputLabel value=""/>
-			<p:calendar value="#{consultaBean.pedido.pedido_data}" pattern="dd/MM/yyyy" showOn="none" disabled="true"/>
-		
-			<p:outputLabel value=""/>
-			<p:inputText value="#{consultaBean.pedido.pedido_cliente}"/>
-
-			<p:outputLabel value=""/>
-			<p:inputText value="#{consultaBean.pedido.pedido_status}"/>
+				<p:outputLabel value=""/>
+				<p:inputText value="#{consultaBean.pedido.pedido_cliente}"/>
+	
+				<p:outputLabel value=""/>
+				<p:inputText value="#{consultaBean.pedido.pedido_status}"/>
+				
+				<p:outputLabel value=""/>
+				<p:calendar value="#{consultaBean.pedido.pedido_previsao_entrega}" pattern="dd/MM/yyyy" showOn="none" disabled="true"/>
+				
+				<p:outputLabel value=""/>
+				<p:inputText value="#{consultaBean.pedido.pedido_cliente_nome}"/>
+			</h:panelGrid>	
 			
-			<p:outputLabel value=""/>
-			<p:calendar value="#{consultaBean.pedido.pedido_previsao_entrega}" pattern="dd/MM/yyyy" showOn="none" disabled="true"/>
+			<br></br><br></br><br></br>
 			
-			<p:outputLabel value=""/>
-			<p:inputText value="#{consultaBean.pedido.pedido_cliente_nome}"/>
-		</h:panelGrid>	
+			<p:dataTable value="#{consultaBean.pedido.listapecas}" var="lista">
+				<p:column headerText="Identificacao">
+					<h:outputText value="#{lista.pedido_item_id}"/>
+				</p:column>
+			</p:dataTable>
 		</h:form>
 		
 	</h:body>
