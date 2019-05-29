@@ -1,24 +1,33 @@
 package br.com.alu.modelo;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
 public class Pedido {
+	@Id
 	private Integer pedido_id;
-	private Integer empresa_id;
-	private Integer cliente_id;
+	
 	private Date pedido_data;
 	private String pedido_cliente;
 	private char pedido_status;
 	private Date pedido_previsao_entrega;
 	private String pedido_cliente_nome;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	private Empresa empresa;
 
-	@Id
+	@OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
+	private List<Pedido_Item> listapecas;
+
 	public Integer getPedido_id() {
 		return pedido_id;
 	}
@@ -27,20 +36,12 @@ public class Pedido {
 		this.pedido_id = pedido_id;
 	}
 
-	public Integer getEmpresa_id() {
-		return empresa_id;
+	public Empresa getEmpresa() {
+		return empresa;
 	}
 
-	public void setEmpresa_id(Integer empresa_id) {
-		this.empresa_id = empresa_id;
-	}
-
-	public Integer getCliente_id() {
-		return cliente_id;
-	}
-
-	public void setCliente_id(Integer cliente_id) {
-		this.cliente_id = cliente_id;
+	public void setEmpresa(Empresa empresa) {
+		this.empresa = empresa;
 	}
 
 	@Temporal(TemporalType.TIMESTAMP.DATE)
@@ -83,6 +84,14 @@ public class Pedido {
 
 	public void setPedido_cliente_nome(String pedido_cliente_nome) {
 		this.pedido_cliente_nome = pedido_cliente_nome;
+	}
+
+	public List<Pedido_Item> getListapecas() {
+		return listapecas;
+	}
+
+	public void setListapecas(List<Pedido_Item> listapecas) {
+		this.listapecas = listapecas;
 	}
 
 	@Override
