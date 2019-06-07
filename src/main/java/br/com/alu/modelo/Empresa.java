@@ -25,4 +25,10 @@ public class Empresa {
 		this.empresa_nome = empresa_nome;
 	}
 
+	@Override
+	public String toString() {
+		return "Empresa [empresa_id=" + empresa_id + ", empresa_nome=" + empresa_nome + "]";
+	}
+
+	
 }

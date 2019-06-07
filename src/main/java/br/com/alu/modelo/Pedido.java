@@ -8,8 +8,9 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -17,22 +18,28 @@ import javax.persistence.TemporalType;
 public class Pedido {
 	@Id
 	private Integer pedido_id;
-	
+
+	@Temporal(TemporalType.TIMESTAMP.DATE)
 	private Date pedido_data;
+
 	private String pedido_cliente;
 	private char pedido_status;
+
+	@Temporal(TemporalType.TIMESTAMP.DATE)
 	private Date pedido_previsao_entrega;
 	private String pedido_cliente_nome;
-	
-	@OneToOne(cascade = CascadeType.ALL)
+
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "empresa_id", referencedColumnName = "empresa_id", nullable = false)
 	private Empresa empresa;
 
-	@OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL,fetch=FetchType.EAGER)
+	@OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<Pedido_Item> listapecas;
-	
+
 	public Pedido() {
 		this.listapecas = new ArrayList<Pedido_Item>();
 	}
+
 	public Integer getPedido_id() {
 		return pedido_id;
 	}
@@ -49,7 +56,6 @@ public class Pedido {
 		this.empresa = empresa;
 	}
 
-	@Temporal(TemporalType.TIMESTAMP.DATE)
 	public Date getPedido_data() {
 		return pedido_data;
 	}
@@ -74,7 +80,6 @@ public class Pedido {
 		this.pedido_status = pedido_status;
 	}
 
-	@Temporal(TemporalType.TIMESTAMP.DATE)
 	public Date getPedido_previsao_entrega() {
 		return pedido_previsao_entrega;
 	}
@@ -122,6 +127,14 @@ public class Pedido {
 		} else if (!pedido_id.equals(other.pedido_id))
 			return false;
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Pedido [pedido_id=" + pedido_id + ", pedido_data=" + pedido_data + ", pedido_cliente=" + pedido_cliente
+				+ ", pedido_status=" + pedido_status + ", pedido_previsao_entrega=" + pedido_previsao_entrega
+				+ ", pedido_cliente_nome=" + pedido_cliente_nome + ", empresa=" + empresa + ", listapecas=" + listapecas
+				+ "]";
 	}
 
 }
