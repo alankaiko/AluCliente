@@ -22,6 +22,7 @@ public class ConsultaBean {
 
 	public void BuscarPorCodigo() {
 		this.pedido = service.BuscarPorPedido(this.codigoProjeto);
+		System.out.println(this.pedido.toString());
 	}
 
 	public Pedido getPedido() {
